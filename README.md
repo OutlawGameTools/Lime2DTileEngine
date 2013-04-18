@@ -19,9 +19,11 @@ overseen by Outlaw Game Tools. Copyright 2013 Three Ring Ranch.
 
 
 
-Usage:
+Usage (yes, I know this isn't enough - it's coming):
 
 Copy the lime folder into your project.
+
+Then use this in your main.lua file:
 
 lime = require("lime.lime")
 
