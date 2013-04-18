@@ -1,0 +1,1747 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li><strong>lime-map.lua</strong></li>
+	
+	<li>
+		<a href="../files/lime-object.html">lime-object.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-objectLayer.html">lime-objectLayer.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-property.html">lime-property.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-tile.html">lime-tile.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-tileLayer.html">lime-tileLayer.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-tileset.html">lime-tileset.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-utils.html">lime-utils.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime.html">lime.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>lime-map.lua</code></h1>
+
+
+
+
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:addObject">Map:addObject</a>&nbsp;(displayObject)</td>
+	<td class="summary">Adds a displayObject to the world.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:addObjectListener">Map:addObjectListener</a>&nbsp;(objectType, listener)</td>
+	<td class="summary">Adds an Object listener to the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:addProperty">Map:addProperty</a>&nbsp;(property)</td>
+	<td class="summary">Adds a Property to the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:addPropertyListener">Map:addPropertyListener</a>&nbsp;(propertyName, listener)</td>
+	<td class="summary">Adds a Property listener to the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:build">Map:build</a>&nbsp;()</td>
+	<td class="summary">Builds the physical representation of the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:create">Map:create</a>&nbsp;()</td>
+	<td class="summary">Creates the visual representation of the map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:createSprite">Map:createSprite</a>&nbsp;(gid)</td>
+	<td class="summary">Creates a sprite from a passed in GID Originally created by FrankS - http://developer.anscamobile.com/forum/2011/02/19/additional-convenience-functions-navigate-lime-world-tree </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:destroy">Map:destroy</a>&nbsp;()</td>
+	<td class="summary">Completely removes all visual and physical objects associated with the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:drag">Map:drag</a>&nbsp;(event)</td>
+	<td class="summary">Drags the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:fadeToPosition">Map:fadeToPosition</a>&nbsp;(x, y, fadeTime, moveDelay, onCompleteHandler)</td>
+	<td class="summary">Fades the Map to a new position.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:findValuesByTilePropertyName">Map:findValuesByTilePropertyName</a>&nbsp;(name)</td>
+	<td class="summary">Gets a list of all tile properties across the map that have the same name.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:fireObjectListener">Map:fireObjectListener</a>&nbsp;(object)</td>
+	<td class="summary">Fires an already added object listener </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:firePropertyListener">Map:firePropertyListener</a>&nbsp;(property, propertyType, object)</td>
+	<td class="summary">Fires an already added property listener.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getGIDForTileNameID">Map:getGIDForTileNameID</a>&nbsp;(tileSetName, localTileID)</td>
+	<td class="summary">Gets the GID and local id for a tile from a named tileset with a specified local id.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getHeaderValue">Map:getHeaderValue</a>&nbsp;(name)</td>
+	<td class="summary">Gets the value of a header Property of the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getObjectLayer">Map:getObjectLayer</a>&nbsp;(indexOrName)</td>
+	<td class="summary">Gets an ObjectLayer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getObjectListeners">Map:getObjectListeners</a>&nbsp;()</td>
+	<td class="summary">Gets a table containing all the object listeners that have been added to the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getObjectsWithName">Map:getObjectsWithName</a>&nbsp;(name)</td>
+	<td class="summary">Gets a list of Objects across all ObjectLayers that have a specified name.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getObjectsWithProperty">Map:getObjectsWithProperty</a>&nbsp;(name)</td>
+	<td class="summary">Gets a list of Objects across all ObjectLayers that have a specified property.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getObjectsWithType">Map:getObjectsWithType</a>&nbsp;(objectType)</td>
+	<td class="summary">Gets a list of Objects across all ObjectLayers that have a specified type.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getPosition">Map:getPosition</a>&nbsp;()</td>
+	<td class="summary">Gets the position of the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getProperties">Map:getProperties</a>&nbsp;()</td>
+	<td class="summary">Gets a list of all Properties of the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getProperty">Map:getProperty</a>&nbsp;(name)</td>
+	<td class="summary">Gets a Property of the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getPropertyCount">Map:getPropertyCount</a>&nbsp;()</td>
+	<td class="summary">Gets a count of how many properties the Map has.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getPropertyListeners">Map:getPropertyListeners</a>&nbsp;()</td>
+	<td class="summary">Gets a table containing all the property listeners that have been added to the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getPropertyValue">Map:getPropertyValue</a>&nbsp;(name)</td>
+	<td class="summary">Gets the value of a Property of the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getTileAt">Map:getTileAt</a>&nbsp;(position)</td>
+	<td class="summary">Gets the first found tile at a specified position.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getTileLayer">Map:getTileLayer</a>&nbsp;(indexOrName)</td>
+	<td class="summary">Gets a TileLayer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getTileNameIDForGID">Map:getTileNameIDForGID</a>&nbsp;(gid)</td>
+	<td class="summary">Gets the name of the tileset and the local id of a specified gid Originally created by FrankS - http://developer.anscamobile.com/forum/2011/02/19/additional-convenience-functions-navigate-lime-world-tree </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getTilePropertyValueForGID">Map:getTilePropertyValueForGID</a>&nbsp;(gid, name)</td>
+	<td class="summary">Gets a property value from a tileset.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getTileSet">Map:getTileSet</a>&nbsp;(indexOrName)</td>
+	<td class="summary">Gets a TileSet.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getTileSetFromGID">Map:getTileSetFromGID</a>&nbsp;(gid)</td>
+	<td class="summary">Gets a Tile image from a GID.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getTilesAt">Map:getTilesAt</a>&nbsp;(position, count)</td>
+	<td class="summary">Gets all Tiles across all TileLayers at a specified position.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:getTilesWithProperty">Map:getTilesWithProperty</a>&nbsp;(name)</td>
+	<td class="summary">Gets a list of Tiles across all TileLayers that have a specified property.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:hasProperty">Map:hasProperty</a>&nbsp;(name)</td>
+	<td class="summary">Checks whether the Map has a certain Property.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:hide">Map:hide</a>&nbsp;()</td>
+	<td class="summary">Hides the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:hideDebugImages">Map:hideDebugImages</a>&nbsp;()</td>
+	<td class="summary">Hides all debug images on the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:move">Map:move</a>&nbsp;(x, y)</td>
+	<td class="summary">Moves the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:new">Map:new</a>&nbsp;(filename, baseDirectory, customMapParams)</td>
+	<td class="summary">Create a new instance of a Map object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:reload">Map:reload</a>&nbsp;()</td>
+	<td class="summary">Completely destroys the Map and then reloads it from disk.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:removeProperty">Map:removeProperty</a>&nbsp;(name)</td>
+	<td class="summary">Removes a Property from the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:setFocus">Map:setFocus</a>&nbsp;(object, xOffset, yOffset)</td>
+	<td class="summary">Sets the focus for the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:setParallaxPosition">Map:setParallaxPosition</a>&nbsp;(position)</td>
+	<td class="summary">Sets the position of the Map for Parallax effects.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:setPosition">Map:setPosition</a>&nbsp;(x, y)</td>
+	<td class="summary">Sets the position of the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:setProperty">Map:setProperty</a>&nbsp;(name, value)</td>
+	<td class="summary">Sets the value of a Property of the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:show">Map:show</a>&nbsp;()</td>
+	<td class="summary">Shows the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:showDebugImages">Map:showDebugImages</a>&nbsp;()</td>
+	<td class="summary">Shows all debug images on the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:slideToPosition">Map:slideToPosition</a>&nbsp;(x, y, slideTime, onCompleteHandler)</td>
+	<td class="summary">Slides the Map to a new position.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:toggleDebugImagesVisibility">Map:toggleDebugImagesVisibility</a>&nbsp;()</td>
+	<td class="summary">Toggles the visibility of all debug images on the Map.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Map:update">Map:update</a>&nbsp;(event)</td>
+	<td class="summary">Updates the Map.</td>
+	</tr>
+
+</table>
+
+
+
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="Map:addObject"></a><strong>Map:addObject</strong>&nbsp;(displayObject)</dt>
+<dd>
+Adds a displayObject to the world.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  displayObject: The displayObject to add.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The added displayObject.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:addObjectListener"></a><strong>Map:addObjectListener</strong>&nbsp;(objectType, listener)</dt>
+<dd>
+Adds an Object listener to the Map.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  objectType: The type of Object to listen for.
+	</li>
+	
+	<li>
+	  listener: The listener function.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:addProperty"></a><strong>Map:addProperty</strong>&nbsp;(property)</dt>
+<dd>
+Adds a Property to the Map.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  property: The Property to add.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The added Property.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:addPropertyListener"></a><strong>Map:addPropertyListener</strong>&nbsp;(propertyName, listener)</dt>
+<dd>
+Adds a Property listener to the Map.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  propertyName: The name of the Property to listen for.
+	</li>
+	
+	<li>
+	  listener: The listener function.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:build"></a><strong>Map:build</strong>&nbsp;()</dt>
+<dd>
+Builds the physical representation of the Map.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:create"></a><strong>Map:create</strong>&nbsp;()</dt>
+<dd>
+Creates the visual representation of the map.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+The newly created world a visual representation of the map.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:createSprite"></a><strong>Map:createSprite</strong>&nbsp;(gid)</dt>
+<dd>
+Creates a sprite from a passed in GID Originally created by FrankS - http://developer.anscamobile.com/forum/2011/02/19/additional-convenience-functions-navigate-lime-world-tree
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  gid: The gid of the tile to create.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+A corona display object. Nil if gid was invalid.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:destroy"></a><strong>Map:destroy</strong>&nbsp;()</dt>
+<dd>
+Completely removes all visual and physical objects associated with the Map.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:drag"></a><strong>Map:drag</strong>&nbsp;(event)</dt>
+<dd>
+Drags the Map.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  event: The Touch event.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:fadeToPosition"></a><strong>Map:fadeToPosition</strong>&nbsp;(x, y, fadeTime, moveDelay, onCompleteHandler)</dt>
+<dd>
+Fades the Map to a new position.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  x: The new X position of the Map.
+	</li>
+	
+	<li>
+	  y: The new Y position of the Map.
+	</li>
+	
+	<li>
+	  fadeTime: The time it will take to fade the Map out or in. Optional, default is 1000.
+	</li>
+	
+	<li>
+	  moveDelay: The time inbetween both fades. Optional, default is 0.
+	</li>
+	
+	<li>
+	  onCompleteHandler: Event handler to be called on movement completion. Optional.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:findValuesByTilePropertyName"></a><strong>Map:findValuesByTilePropertyName</strong>&nbsp;(name)</dt>
+<dd>
+Gets a list of all tile properties across the map that have the same name. Originally created by FrankS - http://developer.anscamobile.com/forum/2011/02/19/additional-convenience-functions-navigate-lime-world-tree
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The type of the Property to look for.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+A list of found Objects. Empty if none found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:fireObjectListener"></a><strong>Map:fireObjectListener</strong>&nbsp;(object)</dt>
+<dd>
+Fires an already added object listener
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  object: The object that the listener was waiting for.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:firePropertyListener"></a><strong>Map:firePropertyListener</strong>&nbsp;(property, propertyType, object)</dt>
+<dd>
+Fires an already added property listener.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  property: The property object that was hit.
+	</li>
+	
+	<li>
+	  propertyType: The type of the property object. "map", "tileLayer", "objectLayer", "tile", "obeject".
+	</li>
+	
+	<li>
+	  object: The object that has the property.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getGIDForTileNameID"></a><strong>Map:getGIDForTileNameID</strong>&nbsp;(tileSetName, localTileID)</dt>
+<dd>
+Gets the GID and local id for a tile from a named tileset with a specified local id. Originally created by FrankS - http://developer.anscamobile.com/forum/2011/02/19/additional-convenience-functions-navigate-lime-world-tree
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tileSetName: The name of the tileset to look for. Can also be specified in a single string - "tileSetName:localTileID".
+	</li>
+	
+	<li>
+	  localTileID: The local id of the tile. Can also be specified in a single string - "tileSetName:localTileID".
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return values:</h3>
+<ol>
+	
+	<li>The gid of the tile. Nil if none found.
+	
+	<li>The local id of the tile. Nil if none found.
+	
+</ol>
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getHeaderValue"></a><strong>Map:getHeaderValue</strong>&nbsp;(name)</dt>
+<dd>
+Gets the value of a header Property of the Map.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the header Property.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+value The Property value. nil if no Property found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getObjectLayer"></a><strong>Map:getObjectLayer</strong>&nbsp;(indexOrName)</dt>
+<dd>
+Gets an ObjectLayer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  indexOrName: The index or name of the ObjectLayer to get.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The object layer at indexOrName.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getObjectListeners"></a><strong>Map:getObjectListeners</strong>&nbsp;()</dt>
+<dd>
+Gets a table containing all the object listeners that have been added to the Map.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+The object listeners.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getObjectsWithName"></a><strong>Map:getObjectsWithName</strong>&nbsp;(name)</dt>
+<dd>
+Gets a list of Objects across all ObjectLayers that have a specified name.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Objects to look for.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+A list of found Objects. Empty if none found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getObjectsWithProperty"></a><strong>Map:getObjectsWithProperty</strong>&nbsp;(name)</dt>
+<dd>
+Gets a list of Objects across all ObjectLayers that have a specified property.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property to look for.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+A list of found Objects. Empty if none found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getObjectsWithType"></a><strong>Map:getObjectsWithType</strong>&nbsp;(objectType)</dt>
+<dd>
+Gets a list of Objects across all ObjectLayers that have a specified type.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  objectType: The type of the Objects to look for.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+A list of found Objects. Empty if none found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getPosition"></a><strong>Map:getPosition</strong>&nbsp;()</dt>
+<dd>
+Gets the position of the Map.
+
+
+
+
+
+
+
+<h3>Return values:</h3>
+<ol>
+	
+	<li>The X position of the Map.
+	
+	<li>The Y position of the Map.
+	
+</ol>
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getProperties"></a><strong>Map:getProperties</strong>&nbsp;()</dt>
+<dd>
+Gets a list of all Properties of the Map.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+The list of Properties.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getProperty"></a><strong>Map:getProperty</strong>&nbsp;(name)</dt>
+<dd>
+Gets a Property of the Map.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The Property. nil if no Property found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getPropertyCount"></a><strong>Map:getPropertyCount</strong>&nbsp;()</dt>
+<dd>
+Gets a count of how many properties the Map has.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+The Property count.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getPropertyListeners"></a><strong>Map:getPropertyListeners</strong>&nbsp;()</dt>
+<dd>
+Gets a table containing all the property listeners that have been added to the Map.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+The property listeners.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getPropertyValue"></a><strong>Map:getPropertyValue</strong>&nbsp;(name)</dt>
+<dd>
+Gets the value of a Property of the Map.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+value The Property value. nil if no Property found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getTileAt"></a><strong>Map:getTileAt</strong>&nbsp;(position)</dt>
+<dd>
+Gets the first found tile at a specified position.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  position: The position of the Tile. A table containing either x & y or row & column.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+tile The found Tile. nil if none found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getTileLayer"></a><strong>Map:getTileLayer</strong>&nbsp;(indexOrName)</dt>
+<dd>
+Gets a TileLayer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  indexOrName: The index or name of the TileLayer to get.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The tile layer at indexOrName.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getTileNameIDForGID"></a><strong>Map:getTileNameIDForGID</strong>&nbsp;(gid)</dt>
+<dd>
+Gets the name of the tileset and the local id of a specified gid Originally created by FrankS - http://developer.anscamobile.com/forum/2011/02/19/additional-convenience-functions-navigate-lime-world-tree
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  gid: The gid of the tile to check.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return values:</h3>
+<ol>
+	
+	<li>The name of the tileset. Nil if none found.
+	
+	<li>The local id of the tile. Nil if none found.
+	
+</ol>
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getTilePropertyValueForGID"></a><strong>Map:getTilePropertyValueForGID</strong>&nbsp;(gid, name)</dt>
+<dd>
+Gets a property value from a tileset. Originally created by FrankS - http://developer.anscamobile.com/forum/2011/02/19/additional-convenience-functions-navigate-lime-world-tree
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  gid: The gid of the tile to check.
+	</li>
+	
+	<li>
+	  name: The name of the property to look for.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The value of the property. Nil if none found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getTileSet"></a><strong>Map:getTileSet</strong>&nbsp;(indexOrName)</dt>
+<dd>
+Gets a TileSet.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  indexOrName: The index or name of the TileSet to get.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The tileset at indexOrName.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getTileSetFromGID"></a><strong>Map:getTileSetFromGID</strong>&nbsp;(gid)</dt>
+<dd>
+Gets a Tile image from a GID. Fixed fantastically by FrankS - http://developer.anscamobile.com/forum/2011/02/18/bug-mapgettilesetfromgidgid
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  gid: The gid to use.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The tileset at the gid location.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getTilesAt"></a><strong>Map:getTilesAt</strong>&nbsp;(position, count)</dt>
+<dd>
+Gets all Tiles across all TileLayers at a specified position.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  position: The position of the Tiles. A table containing either x & y or row & column.
+	</li>
+	
+	<li>
+	  count: The number of Tiles to get. Optional.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+A table of found Tiles. Empty if none found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:getTilesWithProperty"></a><strong>Map:getTilesWithProperty</strong>&nbsp;(name)</dt>
+<dd>
+Gets a list of Tiles across all TileLayers that have a specified property.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property to look for.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+A list of found Tiles. Empty if none found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:hasProperty"></a><strong>Map:hasProperty</strong>&nbsp;(name)</dt>
+<dd>
+Checks whether the Map has a certain Property.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the property to check for.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+True if the Map has the Property, false if not.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:hide"></a><strong>Map:hide</strong>&nbsp;()</dt>
+<dd>
+Hides the Map.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:hideDebugImages"></a><strong>Map:hideDebugImages</strong>&nbsp;()</dt>
+<dd>
+Hides all debug images on the Map.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:move"></a><strong>Map:move</strong>&nbsp;(x, y)</dt>
+<dd>
+Moves the Map.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  x: The amount to move the Map along the X axis.
+	</li>
+	
+	<li>
+	  y: The amount to move the Map along the Y axis.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:new"></a><strong>Map:new</strong>&nbsp;(filename, baseDirectory, customMapParams)</dt>
+<dd>
+Create a new instance of a Map object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  filename: 
+	</li>
+	
+	<li>
+	  baseDirectory: 
+	</li>
+	
+	<li>
+	  customMapParams: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The newly created Map instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:reload"></a><strong>Map:reload</strong>&nbsp;()</dt>
+<dd>
+Completely destroys the Map and then reloads it from disk. Will also recreate the visual and then rebuild the physical if it was in the first place.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+The reloaded Map object.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:removeProperty"></a><strong>Map:removeProperty</strong>&nbsp;(name)</dt>
+<dd>
+Removes a Property from the Map.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property to remove.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:setFocus"></a><strong>Map:setFocus</strong>&nbsp;(object, xOffset, yOffset)</dt>
+<dd>
+Sets the focus for the Map.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  object: 
+	</li>
+	
+	<li>
+	  xOffset: 
+	</li>
+	
+	<li>
+	  yOffset: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:setParallaxPosition"></a><strong>Map:setParallaxPosition</strong>&nbsp;(position)</dt>
+<dd>
+Sets the position of the Map for Parallax effects.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  position: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:setPosition"></a><strong>Map:setPosition</strong>&nbsp;(x, y)</dt>
+<dd>
+Sets the position of the Map.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  x: The new X position of the Map.
+	</li>
+	
+	<li>
+	  y: The new Y position of the Map.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:setProperty"></a><strong>Map:setProperty</strong>&nbsp;(name, value)</dt>
+<dd>
+Sets the value of a Property of the Map. Will create a new Property if none found.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property.
+	</li>
+	
+	<li>
+	  value: The new value.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The property being set.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:show"></a><strong>Map:show</strong>&nbsp;()</dt>
+<dd>
+Shows the Map.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:showDebugImages"></a><strong>Map:showDebugImages</strong>&nbsp;()</dt>
+<dd>
+Shows all debug images on the Map.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:slideToPosition"></a><strong>Map:slideToPosition</strong>&nbsp;(x, y, slideTime, onCompleteHandler)</dt>
+<dd>
+Slides the Map to a new position.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  x: The new X position of the Map.
+	</li>
+	
+	<li>
+	  y: The new Y position of the Map.
+	</li>
+	
+	<li>
+	  slideTime: The time it will take to slide the Map to the new position.
+	</li>
+	
+	<li>
+	  onCompleteHandler: Event handler to be called on movement completion. Optional.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:toggleDebugImagesVisibility"></a><strong>Map:toggleDebugImagesVisibility</strong>&nbsp;()</dt>
+<dd>
+Toggles the visibility of all debug images on the Map.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Map:update"></a><strong>Map:update</strong>&nbsp;(event)</dt>
+<dd>
+Updates the Map.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  event: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

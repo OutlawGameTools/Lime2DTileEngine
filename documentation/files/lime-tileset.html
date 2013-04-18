@@ -1,0 +1,519 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li>
+		<a href="../files/lime-map.html">lime-map.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-object.html">lime-object.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-objectLayer.html">lime-objectLayer.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-property.html">lime-property.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-tile.html">lime-tile.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-tileLayer.html">lime-tileLayer.lua</a>
+	</li>
+
+	<li><strong>lime-tileset.lua</strong></li>
+	
+	<li>
+		<a href="../files/lime-utils.html">lime-utils.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime.html">lime.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>lime-tileset.lua</code></h1>
+
+
+
+
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#TileSet:addProperty">TileSet:addProperty</a>&nbsp;(property)</td>
+	<td class="summary">Adds a Property to the TileSet.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileSet:createSprite">TileSet:createSprite</a>&nbsp;(gid)</td>
+	<td class="summary">Creates a new sprite instance from a specific tile in the tileset.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileSet:destroy">TileSet:destroy</a>&nbsp;()</td>
+	<td class="summary">Completely removes the TileSet.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileSet:getProperties">TileSet:getProperties</a>&nbsp;()</td>
+	<td class="summary">Gets a list of all Properties of the TileSet.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileSet:getPropertiesForTile">TileSet:getPropertiesForTile</a>&nbsp;(id)</td>
+	<td class="summary">Gets a list of Properties on a Tile.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileSet:getProperty">TileSet:getProperty</a>&nbsp;(name)</td>
+	<td class="summary">Gets a Property of the TileSet.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileSet:getPropertyCount">TileSet:getPropertyCount</a>&nbsp;()</td>
+	<td class="summary">Gets a count of how many properties the TileSet has.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileSet:getPropertyValue">TileSet:getPropertyValue</a>&nbsp;(name)</td>
+	<td class="summary">Gets the value of a Property of the TileSet.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileSet:hasProperty">TileSet:hasProperty</a>&nbsp;(name)</td>
+	<td class="summary">Checks whether the TileSet has a certain Property.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileSet:new">TileSet:new</a>&nbsp;(data, map, firstgid, rootDir)</td>
+	<td class="summary">Create a new instance of a TileSet object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileSet:removeProperty">TileSet:removeProperty</a>&nbsp;(name)</td>
+	<td class="summary">Removes a Property from the TileSet.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileSet:setProperty">TileSet:setProperty</a>&nbsp;(name, value)</td>
+	<td class="summary">Sets the value of a Property of the TileSet.</td>
+	</tr>
+
+</table>
+
+
+
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="TileSet:addProperty"></a><strong>TileSet:addProperty</strong>&nbsp;(property)</dt>
+<dd>
+Adds a Property to the TileSet.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  property: The Property to add.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The added Property.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileSet:createSprite"></a><strong>TileSet:createSprite</strong>&nbsp;(gid)</dt>
+<dd>
+Creates a new sprite instance from a specific tile in the tileset.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  gid: The gid of the tile.
+	</li>
+	
+</ul>
+
+
+
+
+<h3>Usage:</h3>
+Originally suggested by draconar - http://developer.anscamobile.com/forum/2011/02/12/using-tile-internal-tileset-change-objects-image
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileSet:destroy"></a><strong>TileSet:destroy</strong>&nbsp;()</dt>
+<dd>
+Completely removes the TileSet.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileSet:getProperties"></a><strong>TileSet:getProperties</strong>&nbsp;()</dt>
+<dd>
+Gets a list of all Properties of the TileSet.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+The list of Properties.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileSet:getPropertiesForTile"></a><strong>TileSet:getPropertiesForTile</strong>&nbsp;(id)</dt>
+<dd>
+Gets a list of Properties on a Tile.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  id: The id of the Tile.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+A table with a list of properties for the tile or an empty table.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileSet:getProperty"></a><strong>TileSet:getProperty</strong>&nbsp;(name)</dt>
+<dd>
+Gets a Property of the TileSet.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The Property. nil if no Property found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileSet:getPropertyCount"></a><strong>TileSet:getPropertyCount</strong>&nbsp;()</dt>
+<dd>
+Gets a count of how many properties the TileSet has.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+The Property count.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileSet:getPropertyValue"></a><strong>TileSet:getPropertyValue</strong>&nbsp;(name)</dt>
+<dd>
+Gets the value of a Property of the TileSet.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The Property value. nil if no Property found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileSet:hasProperty"></a><strong>TileSet:hasProperty</strong>&nbsp;(name)</dt>
+<dd>
+Checks whether the TileSet has a certain Property.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the property to check for.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+True if the TileSet has the Property, false if not.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileSet:new"></a><strong>TileSet:new</strong>&nbsp;(data, map, firstgid, rootDir)</dt>
+<dd>
+Create a new instance of a TileSet object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  data: The XML data.
+	</li>
+	
+	<li>
+	  map: The current Map object.
+	</li>
+	
+	<li>
+	  firstgid: The first GID of the tileset. Optional and only needed if different from the TMX data. Used for custom maps.
+	</li>
+	
+	<li>
+	  rootDir: The root dir of the tileset image. Optional.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The newly created TileSet instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileSet:removeProperty"></a><strong>TileSet:removeProperty</strong>&nbsp;(name)</dt>
+<dd>
+Removes a Property from the TileSet.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property to remove.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileSet:setProperty"></a><strong>TileSet:setProperty</strong>&nbsp;(name, value)</dt>
+<dd>
+Sets the value of a Property of the TileSet. Will create a new Property if none found.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property.
+	</li>
+	
+	<li>
+	  value: The new value.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

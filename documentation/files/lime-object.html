@@ -1,0 +1,752 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li>
+		<a href="../files/lime-map.html">lime-map.lua</a>
+	</li>
+
+	<li><strong>lime-object.lua</strong></li>
+	
+	<li>
+		<a href="../files/lime-objectLayer.html">lime-objectLayer.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-property.html">lime-property.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-tile.html">lime-tile.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-tileLayer.html">lime-tileLayer.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-tileset.html">lime-tileset.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-utils.html">lime-utils.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime.html">lime.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>lime-object.lua</code></h1>
+
+
+
+
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:addProperty">Object:addProperty</a>&nbsp;(property)</td>
+	<td class="summary">Adds a Property to the Object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:build">Object:build</a>&nbsp;()</td>
+	<td class="summary">Builds the physical representation of the Object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:create">Object:create</a>&nbsp;()</td>
+	<td class="summary">Creates the visual debug representation of the Object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:destroy">Object:destroy</a>&nbsp;()</td>
+	<td class="summary">Completely removes all visual and physical objects associated with the Object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:drag">Object:drag</a>&nbsp;(event, The)</td>
+	<td class="summary">Drags the Object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:getObjectTilePropertyValue">Object:getObjectTilePropertyValue</a>&nbsp;(name)</td>
+	<td class="summary">Gets the value of a property on a tile object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:getPosition">Object:getPosition</a>&nbsp;()</td>
+	<td class="summary">Gets the position of the Object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:getProperties">Object:getProperties</a>&nbsp;()</td>
+	<td class="summary">Gets a list of all Properties of the Object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:getProperty">Object:getProperty</a>&nbsp;(name)</td>
+	<td class="summary">Gets a Property of the Object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:getPropertyCount">Object:getPropertyCount</a>&nbsp;()</td>
+	<td class="summary">Gets a count of how many properties the Object has.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:getPropertyValue">Object:getPropertyValue</a>&nbsp;(name)</td>
+	<td class="summary">Gets the value of a Property of the Object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:hasProperty">Object:hasProperty</a>&nbsp;(name)</td>
+	<td class="summary">Checks whether the Object has a certain Property.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:hideDebugImage">Object:hideDebugImage</a>&nbsp;()</td>
+	<td class="summary">Hides the debug image of this Object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:isDebugImageVisible">Object:isDebugImageVisible</a>&nbsp;()</td>
+	<td class="summary">Checks if the debug image of this Object is visible or not.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:move">Object:move</a>&nbsp;(x, y)</td>
+	<td class="summary">Moves the Object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:new">Object:new</a>&nbsp;(data, map, objectLayer)</td>
+	<td class="summary">Create a new instance of an Object object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:removeProperty">Object:removeProperty</a>&nbsp;(name)</td>
+	<td class="summary">Removes a Property from the Object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:setPosition">Object:setPosition</a>&nbsp;(x, y)</td>
+	<td class="summary">Sets the position of the Object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:setProperty">Object:setProperty</a>&nbsp;(name, value)</td>
+	<td class="summary">Sets the value of a Property of the Object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:showDebugImage">Object:showDebugImage</a>&nbsp;()</td>
+	<td class="summary">Shows the debug image of this Object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Object:toggleDebugImageVisibility">Object:toggleDebugImageVisibility</a>&nbsp;()</td>
+	<td class="summary">Toggles the visibility of the debug image of this Object.</td>
+	</tr>
+
+</table>
+
+
+
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="Object:addProperty"></a><strong>Object:addProperty</strong>&nbsp;(property)</dt>
+<dd>
+Adds a Property to the Object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  property: The Property to add.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The added Property.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:build"></a><strong>Object:build</strong>&nbsp;()</dt>
+<dd>
+Builds the physical representation of the Object.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:create"></a><strong>Object:create</strong>&nbsp;()</dt>
+<dd>
+Creates the visual debug representation of the Object.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:destroy"></a><strong>Object:destroy</strong>&nbsp;()</dt>
+<dd>
+Completely removes all visual and physical objects associated with the Object.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:drag"></a><strong>Object:drag</strong>&nbsp;(event, The)</dt>
+<dd>
+Drags the Object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  event: 
+	</li>
+	
+	<li>
+	  The: Touch event.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:getObjectTilePropertyValue"></a><strong>Object:getObjectTilePropertyValue</strong>&nbsp;(name)</dt>
+<dd>
+Gets the value of a property on a tile object. Originally created by FrankS - http://developer.anscamobile.com/forum/2011/02/19/additional-convenience-functions-navigate-lime-world-tree
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the property to look for.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The value of the property. Nil if none found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:getPosition"></a><strong>Object:getPosition</strong>&nbsp;()</dt>
+<dd>
+Gets the position of the Object.
+
+
+
+
+
+
+
+<h3>Return values:</h3>
+<ol>
+	
+	<li>The X position of the Object.
+	
+	<li>The Y position of the Object.
+	
+</ol>
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:getProperties"></a><strong>Object:getProperties</strong>&nbsp;()</dt>
+<dd>
+Gets a list of all Properties of the Object.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+The list of Properties.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:getProperty"></a><strong>Object:getProperty</strong>&nbsp;(name)</dt>
+<dd>
+Gets a Property of the Object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The Property. nil if no Property found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:getPropertyCount"></a><strong>Object:getPropertyCount</strong>&nbsp;()</dt>
+<dd>
+Gets a count of how many properties the Object has.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+The Property count.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:getPropertyValue"></a><strong>Object:getPropertyValue</strong>&nbsp;(name)</dt>
+<dd>
+Gets the value of a Property of the Object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The Property value. nil if no Property found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:hasProperty"></a><strong>Object:hasProperty</strong>&nbsp;(name)</dt>
+<dd>
+Checks whether the Object has a certain Property.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the property to check for.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+True if the Object has the Property, false if not.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:hideDebugImage"></a><strong>Object:hideDebugImage</strong>&nbsp;()</dt>
+<dd>
+Hides the debug image of this Object.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:isDebugImageVisible"></a><strong>Object:isDebugImageVisible</strong>&nbsp;()</dt>
+<dd>
+Checks if the debug image of this Object is visible or not.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+True if it is, false if not.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:move"></a><strong>Object:move</strong>&nbsp;(x, y)</dt>
+<dd>
+Moves the Object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  x: The amount to move the Object along the X axis.
+	</li>
+	
+	<li>
+	  y: The amount to move the Object along the Y axis.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:new"></a><strong>Object:new</strong>&nbsp;(data, map, objectLayer)</dt>
+<dd>
+Create a new instance of an Object object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  data: The XML data.
+	</li>
+	
+	<li>
+	  map: The current Map object.
+	</li>
+	
+	<li>
+	  objectLayer: The ObjectLayer the the Object resides on.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The newly created object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:removeProperty"></a><strong>Object:removeProperty</strong>&nbsp;(name)</dt>
+<dd>
+Removes a Property from the Object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property to remove.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:setPosition"></a><strong>Object:setPosition</strong>&nbsp;(x, y)</dt>
+<dd>
+Sets the position of the Object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  x: The new X position of the Object.
+	</li>
+	
+	<li>
+	  y: The new Y position of the Object.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:setProperty"></a><strong>Object:setProperty</strong>&nbsp;(name, value)</dt>
+<dd>
+Sets the value of a Property of the Object. Will create a new Property if none found.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property.
+	</li>
+	
+	<li>
+	  value: The new value. @return
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:showDebugImage"></a><strong>Object:showDebugImage</strong>&nbsp;()</dt>
+<dd>
+Shows the debug image of this Object.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Object:toggleDebugImageVisibility"></a><strong>Object:toggleDebugImageVisibility</strong>&nbsp;()</dt>
+<dd>
+Toggles the visibility of the debug image of this Object.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

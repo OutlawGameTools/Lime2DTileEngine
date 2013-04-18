@@ -1,0 +1,660 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li>
+		<a href="../files/lime-map.html">lime-map.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-object.html">lime-object.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-objectLayer.html">lime-objectLayer.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-property.html">lime-property.lua</a>
+	</li>
+
+	<li><strong>lime-tile.lua</strong></li>
+	
+	<li>
+		<a href="../files/lime-tileLayer.html">lime-tileLayer.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-tileset.html">lime-tileset.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-utils.html">lime-utils.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime.html">lime.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>lime-tile.lua</code></h1>
+
+
+
+
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:addProperty">Tile:addProperty</a>&nbsp;(property)</td>
+	<td class="summary">Adds a Property to the Tile.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:build">Tile:build</a>&nbsp;()</td>
+	<td class="summary">Builds the physical representation of the Tile.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:create">Tile:create</a>&nbsp;(index)</td>
+	<td class="summary">Creates the visual representation of the Tile.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:destroy">Tile:destroy</a>&nbsp;()</td>
+	<td class="summary">Completely removes all visual and physical objects associated with the Tile.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:drag">Tile:drag</a>&nbsp;(event, The)</td>
+	<td class="summary">Drags the Tile.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:getProperties">Tile:getProperties</a>&nbsp;()</td>
+	<td class="summary">Gets a list of all Properties of the Tile.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:getProperty">Tile:getProperty</a>&nbsp;(name)</td>
+	<td class="summary">Gets a Property of the Tile.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:getPropertyCount">Tile:getPropertyCount</a>&nbsp;()</td>
+	<td class="summary">Gets a count of how many properties the Tile has.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:getPropertyValue">Tile:getPropertyValue</a>&nbsp;(name)</td>
+	<td class="summary">Gets the value of a Property of the Tile.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:getWorldPosition">Tile:getWorldPosition</a>&nbsp;()</td>
+	<td class="summary">Gets the world position of the Tile.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:hasProperty">Tile:hasProperty</a>&nbsp;(name)</td>
+	<td class="summary">Checks whether the Tile has a certain Property.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:isOnScreen">Tile:isOnScreen</a>&nbsp;()</td>
+	<td class="summary">Checks whether the Tile is currently on screen.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:move">Tile:move</a>&nbsp;(x, y)</td>
+	<td class="summary">Moves the Tile.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:new">Tile:new</a>&nbsp;(data, map, layer)</td>
+	<td class="summary">Create a new instance of a Tile object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:removeProperty">Tile:removeProperty</a>&nbsp;(name)</td>
+	<td class="summary">Removes a Property from the Tile.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:setImage">Tile:setImage</a>&nbsp;(gid)</td>
+	<td class="summary">Sets the image of the Tile from a Tileset.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Tile:setProperty">Tile:setProperty</a>&nbsp;(name, value)</td>
+	<td class="summary">Sets the value of a Property of the Tile.</td>
+	</tr>
+
+</table>
+
+
+
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="Tile:addProperty"></a><strong>Tile:addProperty</strong>&nbsp;(property)</dt>
+<dd>
+Adds a Property to the Tile.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  property: The Property to add.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The added Property.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Tile:build"></a><strong>Tile:build</strong>&nbsp;()</dt>
+<dd>
+Builds the physical representation of the Tile.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Tile:create"></a><strong>Tile:create</strong>&nbsp;(index)</dt>
+<dd>
+Creates the visual representation of the Tile.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  index: The Tile number. Not the gid.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Tile:destroy"></a><strong>Tile:destroy</strong>&nbsp;()</dt>
+<dd>
+Completely removes all visual and physical objects associated with the Tile.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Tile:drag"></a><strong>Tile:drag</strong>&nbsp;(event, The)</dt>
+<dd>
+Drags the Tile.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  event: 
+	</li>
+	
+	<li>
+	  The: Touch event.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Tile:getProperties"></a><strong>Tile:getProperties</strong>&nbsp;()</dt>
+<dd>
+Gets a list of all Properties of the Tile.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+The list of Properties.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Tile:getProperty"></a><strong>Tile:getProperty</strong>&nbsp;(name)</dt>
+<dd>
+Gets a Property of the Tile.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The Property. nil if no Property found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Tile:getPropertyCount"></a><strong>Tile:getPropertyCount</strong>&nbsp;()</dt>
+<dd>
+Gets a count of how many properties the Tile has.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+The Property count.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Tile:getPropertyValue"></a><strong>Tile:getPropertyValue</strong>&nbsp;(name)</dt>
+<dd>
+Gets the value of a Property of the Tile.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The Property value. nil if no Property found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Tile:getWorldPosition"></a><strong>Tile:getWorldPosition</strong>&nbsp;()</dt>
+<dd>
+Gets the world position of the Tile.
+
+
+
+
+
+
+
+<h3>Return values:</h3>
+<ol>
+	
+	<li>The X position of the Tile or nil if there is no sprite
+	
+	<li>The Y position of the Tile or nil if there is no sprite
+	
+</ol>
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Tile:hasProperty"></a><strong>Tile:hasProperty</strong>&nbsp;(name)</dt>
+<dd>
+Checks whether the Tile has a certain Property.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the property to check for.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+True if the Tile has the Property, false if not.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Tile:isOnScreen"></a><strong>Tile:isOnScreen</strong>&nbsp;()</dt>
+<dd>
+Checks whether the Tile is currently on screen.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+True if the Tile is on screen, false if not.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Tile:move"></a><strong>Tile:move</strong>&nbsp;(x, y)</dt>
+<dd>
+Moves the Tile.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  x: The amount to move the Tile along the X axis.
+	</li>
+	
+	<li>
+	  y: The amount to move the Tile along the Y axis.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Tile:new"></a><strong>Tile:new</strong>&nbsp;(data, map, layer)</dt>
+<dd>
+Create a new instance of a Tile object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  data: The XML data.
+	</li>
+	
+	<li>
+	  map: The current Map object.
+	</li>
+	
+	<li>
+	  layer: The TileLayer the the Tile resides on.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The newly created tile.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Tile:removeProperty"></a><strong>Tile:removeProperty</strong>&nbsp;(name)</dt>
+<dd>
+Removes a Property from the Tile.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property to remove.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Tile:setImage"></a><strong>Tile:setImage</strong>&nbsp;(gid)</dt>
+<dd>
+Sets the image of the Tile from a Tileset.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  gid: The gid of the tile image.
+	</li>
+	
+</ul>
+
+
+
+
+<h3>Usage:</h3>
+Originally created by Mattguest - http://developer.anscamobile.com/forum/2011/02/02/settile-function
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Tile:setProperty"></a><strong>Tile:setProperty</strong>&nbsp;(name, value)</dt>
+<dd>
+Sets the value of a Property of the Tile. Will create a new Property if none found.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property.
+	</li>
+	
+	<li>
+	  value: The new value.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

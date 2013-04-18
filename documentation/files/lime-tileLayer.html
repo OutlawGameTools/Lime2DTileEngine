@@ -1,0 +1,885 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li>
+		<a href="../files/lime-map.html">lime-map.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-object.html">lime-object.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-objectLayer.html">lime-objectLayer.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-property.html">lime-property.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-tile.html">lime-tile.lua</a>
+	</li>
+
+	<li><strong>lime-tileLayer.lua</strong></li>
+	
+	<li>
+		<a href="../files/lime-tileset.html">lime-tileset.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime-utils.html">lime-utils.lua</a>
+	</li>
+
+	<li>
+		<a href="../files/lime.html">lime.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>lime-tileLayer.lua</code></h1>
+
+
+
+
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:addObject">TileLayer:addObject</a>&nbsp;(displayObject)</td>
+	<td class="summary">Adds a displayObject to the layer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:addProperty">TileLayer:addProperty</a>&nbsp;(property)</td>
+	<td class="summary">Adds a Property to the TileLayer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:build">TileLayer:build</a>&nbsp;()</td>
+	<td class="summary">Builds the physical representation of the TileLayer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:create">TileLayer:create</a>&nbsp;()</td>
+	<td class="summary">Creates the visual representation of the layer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:destroy">TileLayer:destroy</a>&nbsp;()</td>
+	<td class="summary">Completely removes all visual and physical objects associated with the TileLayer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:drag">TileLayer:drag</a>&nbsp;(event)</td>
+	<td class="summary">Drags the TileLayer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:getProperties">TileLayer:getProperties</a>&nbsp;()</td>
+	<td class="summary">Gets a list of all Properties of the TileLayer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:getProperty">TileLayer:getProperty</a>&nbsp;(name)</td>
+	<td class="summary">Gets a Property of the TileLayer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:getPropertyCount">TileLayer:getPropertyCount</a>&nbsp;()</td>
+	<td class="summary">Gets a count of how many properties the Tile Layer has.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:getPropertyValue">TileLayer:getPropertyValue</a>&nbsp;(name)</td>
+	<td class="summary">Gets the value of a Property of the TileLayer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:getTileAt">TileLayer:getTileAt</a>&nbsp;(position)</td>
+	<td class="summary">Gets a Tile on this TileLayer at a specified position.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:getTilesWithProperty">TileLayer:getTilesWithProperty</a>&nbsp;(name)</td>
+	<td class="summary">Gets a list of Tiles on this TileLayer that have a specified property.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:hasProperty">TileLayer:hasProperty</a>&nbsp;(name)</td>
+	<td class="summary">Checks whether the TileLayer has a certain Property.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:hide">TileLayer:hide</a>&nbsp;()</td>
+	<td class="summary">Hides the TileLayer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:move">TileLayer:move</a>&nbsp;(x, y)</td>
+	<td class="summary">Moves the TileLayer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:new">TileLayer:new</a>&nbsp;(data, map)</td>
+	<td class="summary">Create a new instance of a TileLayer object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:removeProperty">TileLayer:removeProperty</a>&nbsp;(name)</td>
+	<td class="summary">Removes a Property from the TileLayer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:removeTileAt">TileLayer:removeTileAt</a>&nbsp;(position)</td>
+	<td class="summary">Destroys a tile at a certain position.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:setPosition">TileLayer:setPosition</a>&nbsp;(x, y)</td>
+	<td class="summary">Sets the position of the TileLayer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:setProperty">TileLayer:setProperty</a>&nbsp;(name, value)</td>
+	<td class="summary">Sets the value of a Property of the TileLayer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:setTileAt">TileLayer:setTileAt</a>&nbsp;(gid, position)</td>
+	<td class="summary">Set a tile at a position.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:show">TileLayer:show</a>&nbsp;()</td>
+	<td class="summary">Shows the TileLayer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:swapTiles">TileLayer:swapTiles</a>&nbsp;(tile1, tile2)</td>
+	<td class="summary">Swaps two tiles around.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TileLayer:swapTilesAtPositions">TileLayer:swapTilesAtPositions</a>&nbsp;(position1, position2)</td>
+	<td class="summary">Swaps two tiles around based on their positions.</td>
+	</tr>
+
+</table>
+
+
+
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="TileLayer:addObject"></a><strong>TileLayer:addObject</strong>&nbsp;(displayObject)</dt>
+<dd>
+Adds a displayObject to the layer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  displayObject: The displayObject to add.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The added displayObject.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:addProperty"></a><strong>TileLayer:addProperty</strong>&nbsp;(property)</dt>
+<dd>
+Adds a Property to the TileLayer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  property: The Property to add.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The added Property.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:build"></a><strong>TileLayer:build</strong>&nbsp;()</dt>
+<dd>
+Builds the physical representation of the TileLayer.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:create"></a><strong>TileLayer:create</strong>&nbsp;()</dt>
+<dd>
+Creates the visual representation of the layer.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+The group containing the newly created layer.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:destroy"></a><strong>TileLayer:destroy</strong>&nbsp;()</dt>
+<dd>
+Completely removes all visual and physical objects associated with the TileLayer.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:drag"></a><strong>TileLayer:drag</strong>&nbsp;(event)</dt>
+<dd>
+Drags the TileLayer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  event: The Touch event.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:getProperties"></a><strong>TileLayer:getProperties</strong>&nbsp;()</dt>
+<dd>
+Gets a list of all Properties of the TileLayer.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+The list of Properties.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:getProperty"></a><strong>TileLayer:getProperty</strong>&nbsp;(name)</dt>
+<dd>
+Gets a Property of the TileLayer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The Property. nil if no Property found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:getPropertyCount"></a><strong>TileLayer:getPropertyCount</strong>&nbsp;()</dt>
+<dd>
+Gets a count of how many properties the Tile Layer has.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+The Property count.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:getPropertyValue"></a><strong>TileLayer:getPropertyValue</strong>&nbsp;(name)</dt>
+<dd>
+Gets the value of a Property of the TileLayer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The Property value. Nil if no Property found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:getTileAt"></a><strong>TileLayer:getTileAt</strong>&nbsp;(position)</dt>
+<dd>
+Gets a Tile on this TileLayer at a specified position.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  position: The position of the Tile. A table containing either x & y or row & column.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The found Tile. nil if none found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:getTilesWithProperty"></a><strong>TileLayer:getTilesWithProperty</strong>&nbsp;(name)</dt>
+<dd>
+Gets a list of Tiles on this TileLayer that have a specified property.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property to look for.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+A list of found Tiles. Empty if none found.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:hasProperty"></a><strong>TileLayer:hasProperty</strong>&nbsp;(name)</dt>
+<dd>
+Checks whether the TileLayer has a certain Property.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the property to check for.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+True if the TileLayer has the Property, false if not.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:hide"></a><strong>TileLayer:hide</strong>&nbsp;()</dt>
+<dd>
+Hides the TileLayer.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:move"></a><strong>TileLayer:move</strong>&nbsp;(x, y)</dt>
+<dd>
+Moves the TileLayer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  x: The amount to move the TileLayer along the X axis.
+	</li>
+	
+	<li>
+	  y: The amount to move the TileLayer along the Y axis.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:new"></a><strong>TileLayer:new</strong>&nbsp;(data, map)</dt>
+<dd>
+Create a new instance of a TileLayer object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  data: The XML data.
+	</li>
+	
+	<li>
+	  map: The current Map object.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The newly created tileLayer.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:removeProperty"></a><strong>TileLayer:removeProperty</strong>&nbsp;(name)</dt>
+<dd>
+Removes a Property from the TileLayer. @param: name The name of the Property to remove.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:removeTileAt"></a><strong>TileLayer:removeTileAt</strong>&nbsp;(position)</dt>
+<dd>
+Destroys a tile at a certain position.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  position: The position of the tile, world or grid.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:setPosition"></a><strong>TileLayer:setPosition</strong>&nbsp;(x, y)</dt>
+<dd>
+Sets the position of the TileLayer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  x: The new X position of the TileLayer.
+	</li>
+	
+	<li>
+	  y: The new Y position of the TileLayer.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:setProperty"></a><strong>TileLayer:setProperty</strong>&nbsp;(name, value)</dt>
+<dd>
+Sets the value of a Property of the TileLayer. Will create a new Property if none found.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: The name of the Property.
+	</li>
+	
+	<li>
+	  value: The new value.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+The new value.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:setTileAt"></a><strong>TileLayer:setTileAt</strong>&nbsp;(gid, position)</dt>
+<dd>
+Set a tile at a position.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  gid: The gid of the tile.
+	</li>
+	
+	<li>
+	  position: The position of the tile, World or Grid.
+	</li>
+	
+</ul>
+
+
+
+
+<h3>Usage:</h3>
+Originally created by Mattguest - http://developer.anscamobile.com/forum/2011/02/02/settile-function
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:show"></a><strong>TileLayer:show</strong>&nbsp;()</dt>
+<dd>
+Shows the TileLayer.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:swapTiles"></a><strong>TileLayer:swapTiles</strong>&nbsp;(tile1, tile2)</dt>
+<dd>
+Swaps two tiles around.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tile1: The first tile.
+	</li>
+	
+	<li>
+	  tile2: The second tile.
+	</li>
+	
+</ul>
+
+
+
+
+<h3>Usage:</h3>
+Originally created by Michał Kołodziejski - http://developer.anscamobile.com/forum/2011/02/12/how-swap-two-tiles-layer
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TileLayer:swapTilesAtPositions"></a><strong>TileLayer:swapTilesAtPositions</strong>&nbsp;(position1, position2)</dt>
+<dd>
+Swaps two tiles around based on their positions.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  position1: The position of the first tile.
+	</li>
+	
+	<li>
+	  position2: The position of the second tile.
+	</li>
+	
+</ul>
+
+
+
+
+<h3>Usage:</h3>
+Originally created by Michał Kołodziejski - http://developer.anscamobile.com/forum/2011/02/12/how-swap-two-tiles-layer
+
+
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>
