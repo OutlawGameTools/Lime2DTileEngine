@@ -28,4 +28,6 @@ Then use this in your main.lua file:
 lime = require("lime.lime")
 
 
+Original Lime tutorials can be found here:
+http://lime.outlawgametools.com/tutorials-3/
 
