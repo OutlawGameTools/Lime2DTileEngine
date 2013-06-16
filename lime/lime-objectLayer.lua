@@ -15,7 +15,9 @@
 ----									REQUIRED MODULES										----
 ----------------------------------------------------------------------------------------------------
 
-local utils = require("lime.lime-utils")
+-- jij 20130616 Calls to utils:hexToRGB are throwing errors with that line in 
+--#TODO Fix error in that file or see whether this is even necessary.
+--local utils = require("lime.lime-utils")
 
 ----------------------------------------------------------------------------------------------------
 ----									CLASS METATABLE											----
