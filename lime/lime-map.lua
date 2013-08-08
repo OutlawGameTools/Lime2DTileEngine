@@ -547,7 +547,7 @@ end
 
 --- Shows the Map.
 function Map:show()
-	for i=1, #self.tiles, 1 do	
+	for i=1, #self.tileLayers, 1 do	
 		self.tileLayers[i]:show()	
 	end	
 	
