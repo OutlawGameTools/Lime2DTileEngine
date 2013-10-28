@@ -300,6 +300,20 @@ function Tile:updateGridPosition()
 	end
 end
 
+--- Gets the position of the Tile.
+-- @return The X position of the Tile or nil if there is no sprite
+-- @return The Y position of the Tile or nil if there is no sprite
+function Tile:getPosition()
+
+	local visual = self:getVisual()
+	
+	if visual then
+		return visual.x, visual.y
+	end
+	
+	return nil
+end
+
 --- Sets the position of the Tile.
 -- @param x The new X position.
 -- @param y The new Y position.
