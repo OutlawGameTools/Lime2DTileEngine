@@ -125,7 +125,7 @@ function TileSet:new(data, map, firstgid, rootDir)
 		
 		local extension = utils:getExtensionFromFilename( filename )
 
-	   	if(extension == "tsx") then -- Using an external tileset
+		if(extension == "tsx") then -- Using an external tileset
 			
 			local path = system.pathForFile(self.source, system.ResourceDirectory)
 
@@ -184,9 +184,8 @@ function TileSet:new(data, map, firstgid, rootDir)
 				
 			end
 
+			self.tileCount = (self.width / self.tilewidth) * (self.height / self.tileheight)
 			self.spriteSheet = sprite.newSpriteSheet(self.rootDir .. self.source, system.ResourceDirectory, self.tilewidth * self.tileXScale, self.tileheight * self.tileYScale)
-
-			self.tileCount = self.spriteSheet.frameCount
 
 			-- Create the actual spriteset object
 			self.spriteSet = sprite.newSpriteSet(self.spriteSheet, 1, self.tileCount)

@@ -653,7 +653,7 @@ function Tile:create(index)
 					self.sprite = newSprite(tileSet.spriteSet)
 
 					-- Set the sprites frame to the current tile in the tileset
-					self.sprite.currentFrame = self.gid - (tileSet.firstgid) + 1
+					self.sprite:setFrame(self.gid - (tileSet.firstgid) + 1)
 				end
 								
 				-- Calculate and set the row position of this tile in the map
