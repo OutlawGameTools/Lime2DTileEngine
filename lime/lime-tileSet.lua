@@ -185,11 +185,14 @@ function TileSet:new(data, map, firstgid, rootDir)
 			end
 
 			self.tileCount = (self.width / self.tilewidth) * (self.height / self.tileheight)
-			self.spriteSheet = sprite.newSpriteSheet(self.rootDir .. self.source, system.ResourceDirectory, self.tilewidth * self.tileXScale, self.tileheight * self.tileYScale)
-
-			-- Create the actual spriteset object
-			self.spriteSet = sprite.newSpriteSet(self.spriteSheet, 1, self.tileCount)
-		
+      local options = {
+        width = self.tilewidth,
+        height = self.tileheight,
+        numFrames = self.tileCount,
+        sheetContentWidth = self.width,
+        sheetContentHeight = self.height
+      }
+      self.imageSheet = graphics.newImageSheet(self.rootDir .. self.source, system.ResourceDirectory, options)
 		end
 
 	end
@@ -284,10 +287,8 @@ end
 function TileSet:createSprite(gid)
 
 	-- Create the sprite instance
-	local sprite = newSprite(self.spriteSet)
+	local sprite = display.newImage(self.imageSheet, gid - (self.firstgid) + 1)
  
-	-- Set the sprites frame to the current tile in the tileset
-	sprite.currentFrame = gid - (self.firstgid) + 1
 	
 	return sprite
 end
@@ -306,7 +307,6 @@ function TileSet:destroy()
 		self.spriteSheet:dispose()
 	end
 	
-	self.spriteSet = nil
 	self.spriteSheet = nil
 
 end

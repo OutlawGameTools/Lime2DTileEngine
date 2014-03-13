@@ -402,11 +402,8 @@ function Object:create()
 		
 		if self.tileSet then
 		
-			-- Create the actual Corona sprite object
-			self.sprite = sprite.newSprite(self.tileSet.spriteSet)
-			
-			-- Set the sprites frame to the current tile in the tileset
-			self.sprite.currentFrame = self.gid - (self.tileSet.firstgid) + 1
+			-- Create the actual Corona image from the tileSet
+			self.sprite = display.newImage(self.tileSet.imageSheet, self.gid - (self.tileSet.firstgid) + 1)
 			
 			-- Copy over the properties to the sprite
 			utils:copyPropertiesToObject(self, self.sprite)

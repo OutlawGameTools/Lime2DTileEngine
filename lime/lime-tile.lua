@@ -648,12 +648,8 @@ function Tile:create(index)
 					end
 					
 				else
-				
-					-- Create the actual Corona sprite object
-					self.sprite = newSprite(tileSet.spriteSet)
-
-					-- Set the sprites frame to the current tile in the tileset
-					self.sprite:setFrame(self.gid - (tileSet.firstgid) + 1)
+					-- Create the actual Corona image object
+					self.sprite = display.newImage(tileSet.imageSheet, self.gid - (tileSet.firstgid) + 1)
 				end
 								
 				-- Calculate and set the row position of this tile in the map
