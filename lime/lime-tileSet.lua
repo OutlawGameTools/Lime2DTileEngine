@@ -101,11 +101,11 @@ function TileSet:new(data, map, firstgid, rootDir)
 
 							self.tileProperties[tileID][#self.tileProperties[tileID] + 1] = Property:new(attributes.name, attributes.value)
 								
-						end										
-					end		
+						end
+					end
 				end
-			end	
-		end	
+			end
+		end
 	end
 	
 	if self.trans then -- IN PREPARATION FOR THE NEW COLOUR MASKING FEATURES

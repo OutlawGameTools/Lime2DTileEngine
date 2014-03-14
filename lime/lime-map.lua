@@ -1121,21 +1121,23 @@ end
 -- @param name The name of the property to look for.
 -- @return The value of the property. Nil if none found.
 function Map:getTilePropertyValueForGID(gid, name)
-
-	local tileSet = self:getTileSetFromGID(gid)
-	
-	if tileSet then
-	
-		local properties = tileSet:getPropertiesForTile(gid)
-	
+		local properties = self:getTilePropertiesForGID(gid)
 		for i = 1, #properties, 1 do
 			if properties[i]:getName() == name then
 				return properties[i]:getValue()
 			end
 		end
-		
-	end
+end
 
+--- Gets the tile properties for a tile 
+-- @param gid The gid of the tile to check
+-- @return the set of properties for that tile or {}
+function Map:getTilePropertiesForGID(gid)
+	local tileSet = self:getTileSetFromGID(gid)
+	if tileSet then
+		return tileSet:getPropertiesForTile(gid)
+	end
+	return {}
 end
 
 --- Gets the GID and local id for a tile from a named tileset with a specified local id.

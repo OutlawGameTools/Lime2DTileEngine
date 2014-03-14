@@ -118,14 +118,17 @@ function Tile:new(data, map, layer)
 				self:setProperty(key, value)
 			end
 		end
-	
 	end
-	
 	-- Absolutely make sure the gid is a number
 	self.gid = utils:convertStringToNumberSafely( self.gid )
-				
-    return self
-    
+
+	-- Pull tile properties from the TileSet
+	local tileProperties = map:getTilePropertiesForGID(self.gid)
+	for _,property in ipairs(tileProperties) do
+		self:setProperty(property:getName(), property:getValue())
+	end
+
+	return self
 end
 
 --- Sets the image of the Tile from a Tileset.
