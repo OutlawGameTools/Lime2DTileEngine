@@ -121,13 +121,6 @@ function Tile:new(data, map, layer)
 	end
 	-- Absolutely make sure the gid is a number
 	self.gid = utils:convertStringToNumberSafely( self.gid )
-
-	-- Pull tile properties from the TileSet
-	local tileProperties = map:getTilePropertiesForGID(self.gid)
-	for _,property in ipairs(tileProperties) do
-		self:setProperty(property:getName(), property:getValue())
-	end
-
 	return self
 end
 
@@ -563,7 +556,7 @@ function Tile:create(index)
 				
 				self.tileSet = tileSet
 				
-				-- Get all the properties this tile should have from the tilese
+				-- Get all the properties this tile should have from the tileset
 				local properties = tileSet:getPropertiesForTile(self.gid)
 				
 				for i=1, #properties, 1 do
