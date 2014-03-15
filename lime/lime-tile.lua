@@ -610,9 +610,13 @@ function Tile:create(index)
 					else
 						
 						self.startFrame = self.startFrame or (self.gid - (tileSet.firstgid) + 1)
-				
-						self.spriteSet = newSpriteSet(tileSet.spriteSheet, self.startFrame, (self.frameCount or (tileSet.tileCount - self.startFrame)), self.loopCount )
-						self.sprite = newSprite( self.spriteSet )
+						local sequenceData = {
+							name="animation1",
+							start=self.startFrame,
+							count=(self.frameCount or (tileSet.tileCount - self.startFrame)),
+							loopCount=self.loopCount
+						}
+						self.sprite = display.newSprite(tileSet.imageSheet, sequenceData)
 							
 						-- Does this tile have a set of sequences?				
 						if(self.sequences) then
