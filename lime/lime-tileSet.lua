@@ -112,7 +112,7 @@ function TileSet:new(data, map, firstgid, rootDir)
 
 		local filename = utils:getFilenameFromPath(self.source)
 		 		 
-		if string.find( self.source, "../" ) then
+		if string.find( self.source, "\\.\\./" ) then
 			print("Lime-Lychee: Absoulute paths are not supported for TileSets. You may want to edit your map in a text editor to fix this." )
 			return
 		end
