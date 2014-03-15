@@ -697,21 +697,8 @@ function Tile:create(index)
 				self.sprite.x = (self.x or self.sprite.x) + (self.xOffset or 0) 
 				self.sprite.y = (self.y or self.sprite.y) + (self.yOffset or 0)
 				
-				-- Adjust the scale and position for Retina display
-				if display.contentScaleX == 0.5 and self.tileSet.usingHDSource == true then
-			
-					-- Scale the sprite back down to 0.5			
-					self.sprite.xScale = self.xScale or 0.5
-					self.sprite.yScale = self.yScale or 0.5
-				
-					-- Readjust the position
-					self.sprite.x = self.sprite.x + self.sprite.width / 4
-					self.sprite.y = self.sprite.y + self.sprite.height / 4
-					
-				else
-					self.sprite.xScale = self.xScale or 1
-					self.sprite.yScale = self.yScale or 1	
-				end
+				self.sprite.xScale = self.xScale or 1
+				self.sprite.yScale = self.yScale or 1
 				
 				if _G.limeScreenCullingEnabled then
 					self.sprite.isVisible = false
