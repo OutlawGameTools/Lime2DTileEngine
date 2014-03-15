@@ -15,8 +15,6 @@
 ----									REQUIRED MODULES										----
 ----------------------------------------------------------------------------------------------------
 
-local sprite = require("sprite") -- doh! old sprite stuff needs updated!
-
 ----------------------------------------------------------------------------------------------------
 ----									CLASS METATABLE											----
 ----------------------------------------------------------------------------------------------------
@@ -37,10 +35,6 @@ Tile.version = 3.4
 local contentWidth = display.contentWidth
 local contentHeight = display.contentHeight
 
-local newSpriteSet = sprite.newSpriteSet
-local newSprite = sprite.newSprite
-local newSpriteSheetFromData = sprite.newSpriteSheetFromData
-
 local abs = math.abs
 local floor = math.floor
 local ceil = math.ceil
@@ -49,10 +43,6 @@ local ceil = math.ceil
 ----									PRIVATE METHODS											----
 ----------------------------------------------------------------------------------------------------
 
-local newSpriteSequence = function(spriteSet, sequenceName, startFrame, frameCount, time, loopCount)
-	sprite.add( spriteSet, sequenceName, startFrame, frameCount, time, loopCount)
-end
-
 local newSpriteSequenceFromString = function(tile, sequenceName, string)
 	if(string) then
 		local sequence = {}
@@ -60,11 +50,12 @@ local newSpriteSequenceFromString = function(tile, sequenceName, string)
 		
 		for i=1, #string, 1 do
 			local param = utils:splitString(string[i], "=")
-			
 			sequence[param[1]] = param[2]
 		end
-	
-		newSpriteSequence(tile.spriteSet, sequenceName, (sequence.startFrame or 1), sequence.frameCount, sequence.time, sequence.loopCount)
+
+		sequence.name = sequenceName
+		sequence.start = sequence.start or sequence.startFrame or 1
+		return sequence
 	end
 end
 
@@ -512,6 +503,25 @@ function Tile:isOnScreen()
 	return nil
 end
 
+function Tile:getSequenceData()
+	if type(self.sequences) == "string" then
+		self.sequences = utils:splitString(self.sequences, ",")
+	elseif type(self.sequences) == "table" then
+
+	end
+
+	-- Create all the sprite sequences
+	local sequenceData = {}
+	for i=1, #self.sequences, 1 do
+		if(self[self.sequences[i]]) then
+			local seqData = newSpriteSequenceFromString(self, self.sequences[i], self[self.sequences[i]])
+			seqData.start = self.startFrame
+			sequenceData[#sequenceData+1] = seqData
+		end
+	end
+	return sequenceData
+end
+
 --- Creates the visual representation of the Tile.
 -- @param index The Tile number. Not the gid.
 function Tile:create(index)
@@ -577,69 +587,39 @@ function Tile:create(index)
 					
 						self.spriteData = require( self.dataFile ).getSpriteSheetData()
 						
+						if(self.sequences) then
+							local sequenceData = self:getSequenceData()
+						end
+
 						if self.spriteData then
-						
 							self.spriteSheet = newSpriteSheetFromData( self.spriteSheet, self.spriteData )
-	
 							self.spriteSet = newSpriteSet( self.spriteSheet, 1, #self.spriteData.frames )
-	
 							sprite.add( self.spriteSet, self.dataFile, 1, #self.spriteData.frames, self.time or 1000, self.loopCount ) 
-							
 							self.sprite = newSprite( self.spriteSet )
-		
 							self.sprite:play()
 						
 						end
 						
-						if(self.sequences) then
-											
-							if type(self.sequences) == "string" then
-								self.sequences = utils:splitString(self.sequences, ",")
-							elseif type(self.sequences) == "table" then
-							end		
-													
-							-- Create all the sprite sequences	
-							for i=1, #self.sequences, 1 do
-								if(self[self.sequences[i]]) then
-									newSpriteSequenceFromString(self, self.sequences[i], self[self.sequences[i]])
-								end
-							end
-	
-						end
 						
 					else
-						
 						self.startFrame = self.startFrame or (self.gid - (tileSet.firstgid) + 1)
-						local sequenceData = {
-							name="animation1",
-							start=self.startFrame,
-							count=(self.frameCount or (tileSet.tileCount - self.startFrame)),
-							loopCount=self.loopCount
-						}
-						self.sprite = display.newSprite(tileSet.imageSheet, sequenceData)
 							
-						-- Does this tile have a set of sequences?				
+						-- Does this tile have a set of sequences?
 						if(self.sequences) then
-												
-							if type(self.sequences) == "string" then
-								self.sequences = utils:splitString(self.sequences, ",")
-							elseif type(self.sequences) == "table" then
-								
-							end		
-													
-							-- Create all the sprite sequences	
-							for i=1, #self.sequences, 1 do
-								if(self[self.sequences[i]]) then
-									newSpriteSequenceFromString(self, self.sequences[i], self[self.sequences[i]])
-								end
-							end
-	
+							local sequenceData = self:getSequenceData()
+							self.sprite = display.newSprite(tileSet.imageSheet, sequenceData)
 						else
-			
+							local sequenceData = {
+								name="animation1",
+								start=self.startFrame,
+								count=(self.frameCount or (tileSet.tileCount - self.startFrame)),
+								loopCount=self.loopCount
+							}
+							self.sprite = display.newSprite(tileSet.imageSheet, sequenceData)
 							-- If the tile has a "frameTime" then create a single sequence allowing it to be time based, otherwise it will just be frame based.
 							if self.frameTime then
 								sprite.add( self.spriteSet, "DEFAULT", 1, self.frameCount, self.frameTime or 1000, self.loopCount)
-								self.sprite:prepare("DEFAULT")
+								self.sprite:setSequence("DEFAULT")
 							end
 							
 							self.sprite:play()

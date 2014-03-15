@@ -26,7 +26,6 @@ Lime was first, but there are now other tiling engines that have more features a
 Usage (yes, I know this isn't enough - it's coming):
 
 1. Copy the lime folder into your project. 
-2. Copy the corona 1.0 sprite library shim sprite.lua into your project from https://github.com/coronalabs/framework-sprite-legacy
 2. Then use this in your main.lua file:  `lime = require("lime")` NOTE: The lime variable must be global, not local.
 
 
