@@ -607,7 +607,6 @@ function Tile:create(index)
 						-- Does this tile have a set of sequences?
 						if(self.sequences) then
 							local sequenceData = self:getSequenceData()
-              pp(sequenceData)
 							self.sprite = display.newSprite(tileSet.imageSheet, sequenceData)
 						else
 							local sequenceData = {
