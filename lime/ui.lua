@@ -76,7 +76,6 @@ local function newButtonHandler( self, event )
 			end
 			
 		elseif "ended" == phase or "cancelled" == phase then 
-			print(phase)
 			if over then 
 				default.isVisible = true
 				over.isVisible = false

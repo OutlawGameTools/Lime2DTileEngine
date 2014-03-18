@@ -515,7 +515,7 @@ function Tile:getSequenceData()
 	for i=1, #self.sequences, 1 do
 		if(self[self.sequences[i]]) then
 			local seqData = newSpriteSequenceFromString(self, self.sequences[i], self[self.sequences[i]])
-			seqData.start = self.startFrame
+			if self.startFrame and not seqData.start then seqData.start = self.startFrame end
 			sequenceData[#sequenceData+1] = seqData
 		end
 	end
@@ -607,6 +607,7 @@ function Tile:create(index)
 						-- Does this tile have a set of sequences?
 						if(self.sequences) then
 							local sequenceData = self:getSequenceData()
+              pp(sequenceData)
 							self.sprite = display.newSprite(tileSet.imageSheet, sequenceData)
 						else
 							local sequenceData = {
