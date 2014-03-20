@@ -638,8 +638,9 @@ function Tile:create(index)
 				-- Calculate and set the column position of this tile in the map
 				self.column = index - (self.row - 1) * self.layer.width
 				
-				self.sprite.xReference = self.xReference or self.sprite.xReference
-				self.sprite.yReference = self.yReference or self.sprite.yReference
+				if (self.xReference or self.yReference) then
+					utils:setAnchorPoint(self.sprite, self.xReference, self.yReference)
+				end
 				
 				if(self.map.orientation == "orthogonal" ) then
 	

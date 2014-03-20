@@ -673,8 +673,6 @@ function Map:setScale( xScale, yScale )
 		self.world.xScale = ( xScale or 1 )
 		self.world.yScale = ( yScale or self.world.xScale )
 		self:updateLayerVisibility()
-		--self.world.xReference = 0
-		--self.world.yReference = 0
 	end
 	
 	self:adjustClampingBoundsForScale()
@@ -691,8 +689,6 @@ function Map:scale( xScale, yScale )
 		self.world.xScale = self.world.xScale + ( xScale or 0 )
 		self.world.yScale = self.world.yScale + ( yScale or xScale or 0 )
 		self:updateLayerVisibility()
-		--self.world.xReference = 0
-		--self.world.yReference = 0
 	end
 	
 	self:adjustClampingBoundsForScale()
@@ -712,8 +708,7 @@ function Map:setScaleAtPosition( xScale, yScale, position )
 		self:resetReferencePoint()
 		
 		-- Set them to the new position
-		self.world.xReference = position.x
-		self.world.yReference = position.y
+		utils:setAnchorPoint(self.world, position.x, position.y)
 	
 	end
 	
@@ -733,12 +728,11 @@ function Map:scaleAtPosition( xScale, yScale, position )
 		-- Reset the reference points
 		self:resetReferencePoint()
 	
-		self.xReferenceDifference = position.x - self.world.xReference
-		self.yReferenceDifference = position.y - self.world.yReference
+		self.xReferenceDifference = position.x - (self.world.anchorX * self.world.width)
+		self.yReferenceDifference = position.y - (self.world.anchorY * self.world.height)
 		
 		-- Set them to the new position
-		self.world.xReference = position.x
-		self.world.yReference = position.y
+		utils:setAnchorPoint(self.world, position.x, position.y)
 		
 		-- Scale
 		self:scale( xScale, yScale )
