@@ -597,7 +597,6 @@ function Tile:create(index)
 							sprite.add( self.spriteSet, self.dataFile, 1, #self.spriteData.frames, self.time or 1000, self.loopCount ) 
 							self.sprite = newSprite( self.spriteSet )
 							self.sprite:play()
-						
 						end
 						
 						
@@ -645,14 +644,7 @@ function Tile:create(index)
 				if(self.map.orientation == "orthogonal" ) then
 	
 					-- Place this tile in the right X position
-					--self.sprite.x = ( ( self.column - 1) * self.map.tilewidth ) + self.sprite.width  * 0.5
-					--self.sprite.x = ( ( self.column - (1 / display.contentScaleX) ) * self.map.tilewidth ) + self.sprite.width  * 0.5                    
-
-					if self.tileSet.usingHDSource then
-						self.sprite.x = ( ( self.column - (1 / display.contentScaleX)) * self.map.tilewidth ) + self.sprite.width  * 0.5
-					else
-						self.sprite.x = ( ( self.column - 1 ) * self.map.tilewidth ) + self.sprite.width  * 0.5
-					end 
+					self.sprite.x = ( ( self.column - 1 ) * self.map.tilewidth ) + self.sprite.width  * 0.5
 
 					-- Place this tile in the right Y position
 					self.sprite.y = ( self.row * self.map.tileheight ) - self.sprite.height * 0.5

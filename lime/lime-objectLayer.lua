@@ -460,7 +460,7 @@ function ObjectLayer:create()
 
 		if strippedHex[2] then
 			hexValue = strippedHex[2]
-		end					
+		end
 	end
 	
 	self.color = utils:hexToRGB(hexValue or "A0A0A4")
