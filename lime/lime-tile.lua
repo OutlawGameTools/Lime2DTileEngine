@@ -15,7 +15,7 @@
 ----									REQUIRED MODULES										----
 ----------------------------------------------------------------------------------------------------
 
-local sprite = require("sprite") -- doh! old sprite stuff needs updated!
+local sprite = require("lime.sprite") -- doh! old sprite stuff needs updated!
 
 ----------------------------------------------------------------------------------------------------
 ----									CLASS METATABLE											----
