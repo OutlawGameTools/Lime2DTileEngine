@@ -15,8 +15,6 @@
 ----									REQUIRED MODULES										----
 ----------------------------------------------------------------------------------------------------
 
-local sprite = require "sprite"
-
 ----------------------------------------------------------------------------------------------------
 ----									CLASS METATABLE											----
 ----------------------------------------------------------------------------------------------------
@@ -33,8 +31,6 @@ TileSet.version = 3.4
 ----------------------------------------------------------------------------------------------------
 ----									LOCALISED VARIABLES										----
 ----------------------------------------------------------------------------------------------------
-
-local newSprite = sprite.newSprite
 
 ----------------------------------------------------------------------------------------------------
 ----									PUBLIC METHODS											----
@@ -101,11 +97,11 @@ function TileSet:new(data, map, firstgid, rootDir)
 
 							self.tileProperties[tileID][#self.tileProperties[tileID] + 1] = Property:new(attributes.name, attributes.value)
 								
-						end										
-					end		
+						end
+					end
 				end
-			end	
-		end	
+			end
+		end
 	end
 	
 	if self.trans then -- IN PREPARATION FOR THE NEW COLOUR MASKING FEATURES
@@ -116,7 +112,7 @@ function TileSet:new(data, map, firstgid, rootDir)
 
 		local filename = utils:getFilenameFromPath(self.source)
 		 		 
-		if string.find( self.source, "../" ) then
+		if string.find( self.source, "\\.\\./" ) then
 			print("Lime-Lychee: Absoulute paths are not supported for TileSets. You may want to edit your map in a text editor to fix this." )
 			return
 		end
@@ -125,7 +121,7 @@ function TileSet:new(data, map, firstgid, rootDir)
 		
 		local extension = utils:getExtensionFromFilename( filename )
 
-	   	if(extension == "tsx") then -- Using an external tileset
+		if(extension == "tsx") then -- Using an external tileset
 			
 			local path = system.pathForFile(self.source, system.ResourceDirectory)
 
@@ -184,13 +180,15 @@ function TileSet:new(data, map, firstgid, rootDir)
 				
 			end
 
-			self.spriteSheet = sprite.newSpriteSheet(self.rootDir .. self.source, system.ResourceDirectory, self.tilewidth * self.tileXScale, self.tileheight * self.tileYScale)
-
-			self.tileCount = self.spriteSheet.frameCount
-
-			-- Create the actual spriteset object
-			self.spriteSet = sprite.newSpriteSet(self.spriteSheet, 1, self.tileCount)
-		
+			self.tileCount = (self.width / self.tilewidth) * (self.height / self.tileheight)
+      local options = {
+        width = self.tilewidth,
+        height = self.tileheight,
+        numFrames = self.tileCount,
+        sheetContentWidth = self.width,
+        sheetContentHeight = self.height
+      }
+      self.imageSheet = graphics.newImageSheet(self.rootDir .. self.source, system.ResourceDirectory, options)
 		end
 
 	end
@@ -285,10 +283,8 @@ end
 function TileSet:createSprite(gid)
 
 	-- Create the sprite instance
-	local sprite = newSprite(self.spriteSet)
+	local sprite = display.newImage(self.imageSheet, gid - (self.firstgid) + 1)
  
-	-- Set the sprites frame to the current tile in the tileset
-	sprite.currentFrame = gid - (self.firstgid) + 1
 	
 	return sprite
 end
@@ -307,7 +303,6 @@ function TileSet:destroy()
 		self.spriteSheet:dispose()
 	end
 	
-	self.spriteSet = nil
 	self.spriteSheet = nil
 
 end

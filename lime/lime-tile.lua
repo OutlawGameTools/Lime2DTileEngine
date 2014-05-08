@@ -15,8 +15,6 @@
 ----									REQUIRED MODULES										----
 ----------------------------------------------------------------------------------------------------
 
-local sprite = require("sprite") -- doh! old sprite stuff needs updated!
-
 ----------------------------------------------------------------------------------------------------
 ----									CLASS METATABLE											----
 ----------------------------------------------------------------------------------------------------
@@ -37,10 +35,6 @@ Tile.version = 3.4
 local contentWidth = display.contentWidth
 local contentHeight = display.contentHeight
 
-local newSpriteSet = sprite.newSpriteSet
-local newSprite = sprite.newSprite
-local newSpriteSheetFromData = sprite.newSpriteSheetFromData
-
 local abs = math.abs
 local floor = math.floor
 local ceil = math.ceil
@@ -49,10 +43,6 @@ local ceil = math.ceil
 ----									PRIVATE METHODS											----
 ----------------------------------------------------------------------------------------------------
 
-local newSpriteSequence = function(spriteSet, sequenceName, startFrame, frameCount, time, loopCount)
-	sprite.add( spriteSet, sequenceName, startFrame, frameCount, time, loopCount)
-end
-
 local newSpriteSequenceFromString = function(tile, sequenceName, string)
 	if(string) then
 		local sequence = {}
@@ -60,11 +50,12 @@ local newSpriteSequenceFromString = function(tile, sequenceName, string)
 		
 		for i=1, #string, 1 do
 			local param = utils:splitString(string[i], "=")
-			
 			sequence[param[1]] = param[2]
 		end
-	
-		newSpriteSequence(tile.spriteSet, sequenceName, (sequence.startFrame or 1), sequence.frameCount, sequence.time, sequence.loopCount)
+
+		sequence.name = sequenceName
+		sequence.start = sequence.start or sequence.startFrame or 1
+		return sequence
 	end
 end
 
@@ -118,14 +109,10 @@ function Tile:new(data, map, layer)
 				self:setProperty(key, value)
 			end
 		end
-	
 	end
-	
 	-- Absolutely make sure the gid is a number
 	self.gid = utils:convertStringToNumberSafely( self.gid )
-				
-    return self
-    
+	return self
 end
 
 --- Sets the image of the Tile from a Tileset.
@@ -516,6 +503,25 @@ function Tile:isOnScreen()
 	return nil
 end
 
+function Tile:getSequenceData()
+	if type(self.sequences) == "string" then
+		self.sequences = utils:splitString(self.sequences, ",")
+	elseif type(self.sequences) == "table" then
+
+	end
+
+	-- Create all the sprite sequences
+	local sequenceData = {}
+	for i=1, #self.sequences, 1 do
+		if(self[self.sequences[i]]) then
+			local seqData = newSpriteSequenceFromString(self, self.sequences[i], self[self.sequences[i]])
+			if self.startFrame and not seqData.start then seqData.start = self.startFrame end
+			sequenceData[#sequenceData+1] = seqData
+		end
+	end
+	return sequenceData
+end
+
 --- Creates the visual representation of the Tile.
 -- @param index The Tile number. Not the gid.
 function Tile:create(index)
@@ -560,7 +566,7 @@ function Tile:create(index)
 				
 				self.tileSet = tileSet
 				
-				-- Get all the properties this tile should have from the tilese
+				-- Get all the properties this tile should have from the tileset
 				local properties = tileSet:getPropertiesForTile(self.gid)
 				
 				for i=1, #properties, 1 do
@@ -581,65 +587,38 @@ function Tile:create(index)
 					
 						self.spriteData = require( self.dataFile ).getSpriteSheetData()
 						
-						if self.spriteData then
-						
-							self.spriteSheet = newSpriteSheetFromData( self.spriteSheet, self.spriteData )
-	
-							self.spriteSet = newSpriteSet( self.spriteSheet, 1, #self.spriteData.frames )
-	
-							sprite.add( self.spriteSet, self.dataFile, 1, #self.spriteData.frames, self.time or 1000, self.loopCount ) 
-							
-							self.sprite = newSprite( self.spriteSet )
-		
-							self.sprite:play()
-						
-						end
-						
 						if(self.sequences) then
-											
-							if type(self.sequences) == "string" then
-								self.sequences = utils:splitString(self.sequences, ",")
-							elseif type(self.sequences) == "table" then
-							end		
-													
-							-- Create all the sprite sequences	
-							for i=1, #self.sequences, 1 do
-								if(self[self.sequences[i]]) then
-									newSpriteSequenceFromString(self, self.sequences[i], self[self.sequences[i]])
-								end
-							end
-	
+							local sequenceData = self:getSequenceData()
 						end
+
+						if self.spriteData then
+							self.spriteSheet = newSpriteSheetFromData( self.spriteSheet, self.spriteData )
+							self.spriteSet = newSpriteSet( self.spriteSheet, 1, #self.spriteData.frames )
+							sprite.add( self.spriteSet, self.dataFile, 1, #self.spriteData.frames, self.time or 1000, self.loopCount ) 
+							self.sprite = newSprite( self.spriteSet )
+							self.sprite:play()
+						end
+						
 						
 					else
-						
 						self.startFrame = self.startFrame or (self.gid - (tileSet.firstgid) + 1)
-				
-						self.spriteSet = newSpriteSet(tileSet.spriteSheet, self.startFrame, (self.frameCount or (tileSet.tileCount - self.startFrame)), self.loopCount )
-						self.sprite = newSprite( self.spriteSet )
 							
-						-- Does this tile have a set of sequences?				
+						-- Does this tile have a set of sequences?
 						if(self.sequences) then
-												
-							if type(self.sequences) == "string" then
-								self.sequences = utils:splitString(self.sequences, ",")
-							elseif type(self.sequences) == "table" then
-								
-							end		
-													
-							-- Create all the sprite sequences	
-							for i=1, #self.sequences, 1 do
-								if(self[self.sequences[i]]) then
-									newSpriteSequenceFromString(self, self.sequences[i], self[self.sequences[i]])
-								end
-							end
-	
+							local sequenceData = self:getSequenceData()
+							self.sprite = display.newSprite(tileSet.imageSheet, sequenceData)
 						else
-			
+							local sequenceData = {
+								name="animation1",
+								start=self.startFrame,
+								count=(self.frameCount or (tileSet.tileCount - self.startFrame)),
+								loopCount=self.loopCount
+							}
+							self.sprite = display.newSprite(tileSet.imageSheet, sequenceData)
 							-- If the tile has a "frameTime" then create a single sequence allowing it to be time based, otherwise it will just be frame based.
 							if self.frameTime then
 								sprite.add( self.spriteSet, "DEFAULT", 1, self.frameCount, self.frameTime or 1000, self.loopCount)
-								self.sprite:prepare("DEFAULT")
+								self.sprite:setSequence("DEFAULT")
 							end
 							
 							self.sprite:play()
@@ -648,12 +627,8 @@ function Tile:create(index)
 					end
 					
 				else
-				
-					-- Create the actual Corona sprite object
-					self.sprite = newSprite(tileSet.spriteSet)
-
-					-- Set the sprites frame to the current tile in the tileset
-					self.sprite.currentFrame = self.gid - (tileSet.firstgid) + 1
+					-- Create the actual Corona image object
+					self.sprite = display.newImage(tileSet.imageSheet, self.gid - (tileSet.firstgid) + 1)
 				end
 								
 				-- Calculate and set the row position of this tile in the map
@@ -662,20 +637,14 @@ function Tile:create(index)
 				-- Calculate and set the column position of this tile in the map
 				self.column = index - (self.row - 1) * self.layer.width
 				
-				self.sprite.xReference = self.xReference or self.sprite.xReference
-				self.sprite.yReference = self.yReference or self.sprite.yReference
+				if (self.xReference or self.yReference) then
+					utils:setAnchorPoint(self.sprite, self.xReference, self.yReference)
+				end
 				
 				if(self.map.orientation == "orthogonal" ) then
 	
 					-- Place this tile in the right X position
-					--self.sprite.x = ( ( self.column - 1) * self.map.tilewidth ) + self.sprite.width  * 0.5
-					--self.sprite.x = ( ( self.column - (1 / display.contentScaleX) ) * self.map.tilewidth ) + self.sprite.width  * 0.5                    
-
-					if self.tileSet.usingHDSource then
-						self.sprite.x = ( ( self.column - (1 / display.contentScaleX)) * self.map.tilewidth ) + self.sprite.width  * 0.5
-					else
-						self.sprite.x = ( ( self.column - 1 ) * self.map.tilewidth ) + self.sprite.width  * 0.5
-					end 
+					self.sprite.x = ( ( self.column - 1 ) * self.map.tilewidth ) + self.sprite.width  * 0.5
 
 					-- Place this tile in the right Y position
 					self.sprite.y = ( self.row * self.map.tileheight ) - self.sprite.height * 0.5
@@ -705,21 +674,8 @@ function Tile:create(index)
 				self.sprite.x = (self.x or self.sprite.x) + (self.xOffset or 0) 
 				self.sprite.y = (self.y or self.sprite.y) + (self.yOffset or 0)
 				
-				-- Adjust the scale and position for Retina display
-				if display.contentScaleX == 0.5 and self.tileSet.usingHDSource == true then
-			
-					-- Scale the sprite back down to 0.5			
-					self.sprite.xScale = self.xScale or 0.5
-					self.sprite.yScale = self.yScale or 0.5
-				
-					-- Readjust the position
-					self.sprite.x = self.sprite.x + self.sprite.width / 4
-					self.sprite.y = self.sprite.y + self.sprite.height / 4
-					
-				else
-					self.sprite.xScale = self.xScale or 1
-					self.sprite.yScale = self.yScale or 1	
-				end
+				self.sprite.xScale = self.xScale or 1
+				self.sprite.yScale = self.yScale or 1
 				
 				if _G.limeScreenCullingEnabled then
 					self.sprite.isVisible = false

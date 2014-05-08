@@ -209,7 +209,6 @@ function TileLayer:new(data, map)
 						data["Attributes"] = {}
 						data["Attributes"].gid = tileIDs[i]
 						data["Attributes"].index = i
-						
 						if(data["Attributes"].gid) then
 							data["Attributes"].gid = tonumber(data["Attributes"].gid)
 							self.tiles[#self.tiles + 1] = Tile:new(data, self.map, self)

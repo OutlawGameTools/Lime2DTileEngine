@@ -37,6 +37,7 @@ local function newButtonHandler( self, event )
 	
 	local onPress = self._onPress
 	local onRelease = self._onRelease
+	local onCancelled = self._onCancelled
 
 	local buttonEvent = {}
 	if (self._id) then
@@ -80,15 +81,20 @@ local function newButtonHandler( self, event )
 				over.isVisible = false
 			end
 			
-			if "ended" == phase then
+			if "ended" == phase and isWithinBounds then
 				-- Only consider this a "click" if the user lifts their finger inside button's contentBounds
-				if isWithinBounds then
 					if onEvent then
 						buttonEvent.phase = "release"
 						result = onEvent( buttonEvent )
 					elseif onRelease then
 						result = onRelease( event )
 					end
+			else
+				if onEvent then
+					buttonEvent.phase = "cancelled"
+					result = onEvent ( buttonEvent )
+				elseif onCancelled then
+					result = onCancelled( event )
 				end
 			end
 			
@@ -190,7 +196,10 @@ function newButton( params )
 	if ( params.onRelease and ( type(params.onRelease) == "function" ) ) then
 		button._onRelease = params.onRelease
 	end
-	
+	if ( params.onCancelled and ( type(params.onCancelled) == "function" ) ) then
+		button._onCancelled = params.onCancelled
+	end
+
 	if (params.onEvent and ( type(params.onEvent) == "function" ) ) then
 		button._onEvent = params.onEvent
 	end

@@ -25,13 +25,12 @@ Lime was first, but there are now other tiling engines that have more features a
 
 Usage (yes, I know this isn't enough - it's coming):
 
-Copy the lime folder into your project.
-
-Then use this in your main.lua file:
-
-lime = require("lime.lime")
+1. Copy the lime folder into your project. 
+2. Then use this in your main.lua file:  `lime = require("lime")` NOTE: The lime variable must be global, not local.
 
 
 Original Lime tutorials can be found here:
 http://lime.outlawgametools.com/tutorials-3/
+
+Updated versions will be added to [the wiki](https://github.com/anthonymoralez/Lime2DTileEngine/wiki)
 

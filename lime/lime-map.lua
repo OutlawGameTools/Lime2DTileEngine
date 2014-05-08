@@ -673,8 +673,6 @@ function Map:setScale( xScale, yScale )
 		self.world.xScale = ( xScale or 1 )
 		self.world.yScale = ( yScale or self.world.xScale )
 		self:updateLayerVisibility()
-		--self.world.xReference = 0
-		--self.world.yReference = 0
 	end
 	
 	self:adjustClampingBoundsForScale()
@@ -691,8 +689,6 @@ function Map:scale( xScale, yScale )
 		self.world.xScale = self.world.xScale + ( xScale or 0 )
 		self.world.yScale = self.world.yScale + ( yScale or xScale or 0 )
 		self:updateLayerVisibility()
-		--self.world.xReference = 0
-		--self.world.yReference = 0
 	end
 	
 	self:adjustClampingBoundsForScale()
@@ -712,8 +708,7 @@ function Map:setScaleAtPosition( xScale, yScale, position )
 		self:resetReferencePoint()
 		
 		-- Set them to the new position
-		self.world.xReference = position.x
-		self.world.yReference = position.y
+		utils:setAnchorPoint(self.world, position.x, position.y)
 	
 	end
 	
@@ -733,12 +728,11 @@ function Map:scaleAtPosition( xScale, yScale, position )
 		-- Reset the reference points
 		self:resetReferencePoint()
 	
-		self.xReferenceDifference = position.x - self.world.xReference
-		self.yReferenceDifference = position.y - self.world.yReference
+		self.xReferenceDifference = position.x - (self.world.anchorX * self.world.width)
+		self.yReferenceDifference = position.y - (self.world.anchorY * self.world.height)
 		
 		-- Set them to the new position
-		self.world.xReference = position.x
-		self.world.yReference = position.y
+		utils:setAnchorPoint(self.world, position.x, position.y)
 		
 		-- Scale
 		self:scale( xScale, yScale )
@@ -1121,21 +1115,23 @@ end
 -- @param name The name of the property to look for.
 -- @return The value of the property. Nil if none found.
 function Map:getTilePropertyValueForGID(gid, name)
-
-	local tileSet = self:getTileSetFromGID(gid)
-	
-	if tileSet then
-	
-		local properties = tileSet:getPropertiesForTile(gid)
-	
+		local properties = self:getTilePropertiesForGID(gid)
 		for i = 1, #properties, 1 do
 			if properties[i]:getName() == name then
 				return properties[i]:getValue()
 			end
 		end
-		
-	end
+end
 
+--- Gets the tile properties for a tile 
+-- @param gid The gid of the tile to check
+-- @return the set of properties for that tile or {}
+function Map:getTilePropertiesForGID(gid)
+	local tileSet = self:getTileSetFromGID(gid)
+	if tileSet then
+		return tileSet:getPropertiesForTile(gid)
+	end
+	return {}
 end
 
 --- Gets the GID and local id for a tile from a named tileset with a specified local id.

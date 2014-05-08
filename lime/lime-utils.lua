@@ -233,7 +233,6 @@ end
 -- @param position The screen position.
 -- @return The world position.
 function Utils:screenToWorldPosition(map, position)
-
 	local _map = map
 	local _position = position
 	
@@ -242,12 +241,8 @@ function Utils:screenToWorldPosition(map, position)
 	if _map.world then
 
 		local xScale, yScale = _map:getScale()
-		
 		newPosition.x = _position.x + _map.world.x * -1
 		newPosition.y = _position.y + _map.world.y * -1
-		
-		newPosition.x = newPosition.x + ( _map.world.xReference * xScale )
-		newPosition.y = newPosition.y + ( _map.world.yReference * xScale )
 		
 		newPosition.x = newPosition.x / xScale
 		newPosition.y = newPosition.y / yScale
@@ -1549,6 +1544,15 @@ function Utils:setSpriteFillColor( sprite, colour )
 		sprite:setFillColor( colour )
 	end
 	
+end
+
+--- Sets the anchor point from graphics 1.0 style xReference and yReference
+-- @param object table with width and height values, usually a displayObject
+-- @param xReference 
+-- @param yReference 
+function Utils:setAnchorPoint( object, xReference, yReference )
+	object.anchorX = math.min(1, math.max(0, xReference / object.width) + 0.5)
+	object.anchorY = math.min(1, math.max(0, xReference / object.height) + 0.5)
 end
 
 _G.utils = Utils:new()
