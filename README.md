@@ -15,13 +15,6 @@ overseen by Outlaw Game Tools. Copyright 2013 Three Ring Ranch.
 	http://OutlawGameTools.com
 
 
-! ! ! W A R N I NG ! ! !
-
-Lime is in a state where it will be *very* (I can't stress that enough) frustrating to anyone but an intermediate-advanced Corona dev. Beginners should steer clear of it. The changes made to the Corona framework in the last several months have made Lime unusable without at least some tweaking.
-
-Lime was first, but there are now other tiling engines that have more features and are faster in operation. MTE (Million Tile Engine) is cheap, full-featured, and fast. Check it out of you want a tiling engine to use, not work on.
-
-
 
 Usage (yes, I know this isn't enough - it's coming):
 
