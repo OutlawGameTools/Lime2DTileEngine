@@ -1,3 +1,5 @@
+WARNING! Lime isn't currently being worked on. If you're looking for a tile-based engine, check out Dusk for Corona -- tt's open source and very good: https://forums.coronalabs.com/topic/42355-dusk-engine/
+
 Lime2DTileEngine
 ================
 
