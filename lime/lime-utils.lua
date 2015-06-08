@@ -624,7 +624,8 @@ function Utils:slideObjectToPosition( object, visual, x, y, slideTime, onComplet
 	end
 	
 	local onSlideComplete = function(event)
-	
+		_object.onSlideTransitionUpdate(event);
+		
 		if _onCompleteHandler then
 			_onCompleteHandler(event)
 		end
